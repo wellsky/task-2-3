@@ -1,11 +1,6 @@
 package Attachments
 
-class LinkAttachment(link: Link) : Attachment {
-    override fun show() {
-        println("Show link preview {$this.link.name}")
-    }
-
-    override fun play() {
-        println("Open link {$this.link.name}")
-    }
+class LinkAttachment : Attachment {
+    override val type: String = "link"
+    val link: Link = Link()
 }

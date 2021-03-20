@@ -1,5 +1,6 @@
 object WallService {
     private var posts: Array<Post> = emptyArray<Post>()
+    private var comments = emptyArray<Comment>()
     private var nextId = 1
 
     fun reset() {
@@ -44,5 +45,15 @@ object WallService {
             }
         }
         return false;
+    }
+
+    fun createComment(comment: Comment): Boolean {
+        for ((index, post) in this.posts.withIndex()) {
+            if (post.id == comment.postId) {
+                this.comments += comment
+                return true
+            }
+        }
+        throw PostNotFoundException("Post not found")
     }
 }
